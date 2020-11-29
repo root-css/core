@@ -1,0 +1,18 @@
+// Root.css v0.1.0
+// Copyright 2020
+// Licensed under MIT (https://github.com/root-css/core/blob/main/LICENSE)
+
+@import "framework";
+
+@import "generic/root";
+@import "generic/reset";
+
+@import "components/grid";
+
+@each $breakpoint in map-keys($breakpoints) {
+  @include media-breakpoint-only($breakpoint) {
+    @include make-responsive-container($breakpoint);
+    @include make-responsive-cell($breakpoint);
+    @include make-responsive-cell-offset($breakpoint);
+  }
+}

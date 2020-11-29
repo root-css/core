@@ -1,0 +1,61 @@
+@import "tools/mixins/grid";
+
+%container {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $spacer;
+  padding-right: $spacer;
+}
+
+.container {
+  @extend %container;
+
+  &-fluid {
+    @extend %container;
+    width: 100%;
+  }
+}
+
+.row,
+.col,
+.cell {
+  display: flex;
+}
+
+.row {
+  flex-wrap: wrap;
+  margin-left: - $spacer;
+  margin-right: - $spacer;
+}
+
+.col {
+  flex-direction: column;
+}
+
+.cell {
+  flex: 0 0 0;
+
+  .row > & {
+    padding-left: $spacer;
+    padding-right: $spacer;
+  }
+
+  .col > & {
+    flex-shrink: 1;
+    flex-grow: 1;
+    padding-top: $spacer;
+    padding-bottom: $spacer;
+  }
+}
+
+@for $i from 1 through $grid {
+  .cell-#{$i} {
+    flex-basis: number-precision(percentage($i/$grid), 2, floor);
+  }
+}
+
+@for $i from 1 through ($grid - 1) {
+  .offset-#{$i} {
+    margin-left: number-precision(percentage($i/$grid), 2, floor);
+  }
+}

@@ -1,0 +1,22 @@
+// Responsive grid mixins
+@mixin make-responsive-container($breakpoint) {
+  .container {
+    max-width: map-get($container-sizes, $breakpoint);
+  }
+}
+
+@mixin make-responsive-cell($breakpoint) {
+  @for $i from 1 through $grid {
+    .cell-#{$breakpoint}-#{$i} {
+      flex-basis: number-precision(percentage($i/$grid), 2, floor);
+    }
+  }
+}
+
+@mixin make-responsive-cell-offset($breakpoint) {
+  @for $i from 1 through ($grid - 1) {
+    .offset-#{$breakpoint}-#{$i} {
+      margin-left: number-precision(percentage($i/$grid), 2, floor);
+    }
+  }
+}

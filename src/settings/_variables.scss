@@ -1,0 +1,45 @@
+$spacer: 1rem !default;
+
+// Breakpoints
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+);
+
+@include _assert-ascending($breakpoints, "$breakpoints");
+@include _assert-starts-at-zero($breakpoints, "$breakpoints");
+
+// Grid container sizes
+$container-sizes: (
+  xs: 100%,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+);
+
+@include _assert-ascending($container-sizes, "$container-sizes");
+
+// Grid cells
+$grid: 12 !default;
+
+// Typography
+$font-size: 1rem;
+
+// Colors
+$white: #fff;
+$black: #000;
+
+$color: #111;
+$bg: $white;
+
+// Root variables
+$root: () !default;
+$root: map-merge((
+  font-size: $font-size,
+  color: $color,
+  bg: $bg,
+), $root);
